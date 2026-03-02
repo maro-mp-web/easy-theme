@@ -6,7 +6,7 @@
                     <?php bloginfo( 'name' ); ?>
                 </a>
 				<p class="text-gray-400 max-w-sm mt-4 leading-relaxed">
-					Curating the best outdoor and travel experiences with beautiful modern WordPress themes. Enjoy the ultimate adventure with Easy Theme.
+					A modern, fast, and highly customizable WordPress starter theme built with Tailwind CSS, Vite, and GSAP. Enjoy building your next project with Easy Theme.
 				</p>
 			</div>
 
