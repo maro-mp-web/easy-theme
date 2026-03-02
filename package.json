@@ -1,27 +1,32 @@
 {
-    "name": "easy-theme",
-    "version": "1.0.0",
-    "description": "WordPress Theme with Vite, Tailwind, GSAP, Three.js, Lucide Icons",
-    "main": "index.js",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "watch": "vite build --watch",
-        "fonts": "node scripts/download-fonts.js"
-    },
-    "author": "Maro Pincevic",
-    "license": "ISC",
-    "devDependencies": {
-        "autoprefixer": "^10.4.19",
-        "postcss": "^8.4.38",
-        "tailwindcss": "^3.4.3",
-        "vite": "^5.2.11"
-    },
-    "dependencies": {
-        "@fontsource/inter": "^5.0.18",
-        "@fontsource/playfair-display": "^5.0.21",
-        "gsap": "^3.12.5",
-        "lucide": "^0.378.0",
-        "three": "^0.164.0"
-    }
+	"name": "easy-theme",
+	"version": "1.0.0",
+	"description": "WordPress Theme with Vite, Tailwind, GSAP, Three.js, Lucide Icons",
+	"main": "index.js",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"watch": "vite build --watch",
+		"fonts": "node scripts/download-fonts.js",
+		"prepare": "husky"
+	},
+	"author": "Maro Pincevic",
+	"license": "ISC",
+	"devDependencies": {
+		"@prettier/plugin-php": "^0.24.0",
+		"autoprefixer": "^10.4.19",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.3.1",
+		"postcss": "^8.4.38",
+		"prettier": "^3.8.1",
+		"tailwindcss": "^3.4.3",
+		"vite": "^5.2.11"
+	},
+	"dependencies": {
+		"@fontsource/inter": "^5.0.18",
+		"@fontsource/playfair-display": "^5.0.21",
+		"gsap": "^3.12.5",
+		"lucide": "^0.378.0",
+		"three": "^0.164.0"
+	}
 }

@@ -11,8 +11,9 @@
 - **Tailwind to Gutenberg Sync**: Automatically restricts the WordPress Editor color palette sizes to your Tailwind setup to prevent user design breaks!
 - **Tailwind Image Breakpoints**: Dynamically adds WordPress image resizer points matching SM, MD, LG, and XL logic!
 - **.env Support**: Keeps your API keys (Google Maps, Stripe, etc.) secure using `vlucas/phpdotenv`.
-- **Secure Custom Fields / ACF Sync**: Pre-configured JSON sync for fields straight into the `acf-json/` git-tracked folder. (It is highly recommended to manage CPTs via the modern SCF interface rather than in PHP code).
-- **WP-CLI Block Generator**: Instantly generate ACF/SCF Block Boilerplates (`block.json` & PHP templates) using built-in terminal commands!
+- **Pre-commit Hooks & Formatting**: Keeps your codebase beautifully clean using Husky, Lint-Staged, and Prettier (including PHP!). It automatically reformats code upon `git commit`.
+- **WP-CLI Block Generator**: Instantly generate ACF/SCF Block Boilerplates (`block.json` & PHP templates).
+- **Auto-loading Gutenberg Blocks**: You NEVER need to register blocks manually! The theme dynamically scans `template-parts/blocks/` and registers every `block.json` it finds upon WP Init!
 - **SVG Helper Component**: Safely and easily load inline SVGs directly from the theme.
 - **GSAP**: Robust JavaScript animation library.
 - **Three.js**: Included setup for high-end 3D graphics on the web.
@@ -28,20 +29,22 @@
 ## Installation & Setup
 
 1. **Clone the repository** into your WordPress `wp-content/themes` directory:
-   ```bash
-   git clone https://github.com/yourusername/easy-theme.git easy-theme
-   cd easy-theme
-   ```
+
+    ```bash
+    git clone https://github.com/yourusername/easy-theme.git easy-theme
+    cd easy-theme
+    ```
 
 2. **Install PHP dependencies**:
-   ```bash
-   composer install
-   ```
+
+    ```bash
+    composer install
+    ```
 
 3. **Install JavaScript dependencies**:
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 ## Development
 
@@ -103,19 +106,20 @@ This starter theme includes a `Security` class (`inc/Setup/Security.php`) that a
 6. **File Editor Disabled**: Automatically defines `DISALLOW_FILE_EDIT` to prevent editing PHP files directly through the WP Admin dashboard.
 
 **How to change this?**
-If you are building a blog and you *need* RSS feeds, or you are building a headless setup and *need* the public REST API, you can easily toggle these settings by commenting out the respective lines inside the `register()` method located in `inc/Setup/Security.php`.
+If you are building a blog and you _need_ RSS feeds, or you are building a headless setup and _need_ the public REST API, you can easily toggle these settings by commenting out the respective lines inside the `register()` method located in `inc/Setup/Security.php`.
 
 ## SVGs & Local Helpers
 
 To safely embed an object-oriented SVG into your template without generic HTML image tags, use the built-in helper. Just point to any SVG stored inside `/assets/images/`:
+
 ```php
 echo \EasyTheme\Helpers\Svg::render('icon-name', 'w-6 h-6 text-blue-500');
 ```
 
 ## Secure Custom Fields (SCF) / ACF Integration
 
-This theme is pre-configured to automatically save and load SCF/ACF field groups directly inside the `acf-json/` directory. 
-By keeping your fields in JSON format, they are fully trackable via Git, allowing your team to sync CPT metas, options pages, and blocks without touching databases. 
+This theme is pre-configured to automatically save and load SCF/ACF field groups directly inside the `acf-json/` directory.
+By keeping your fields in JSON format, they are fully trackable via Git, allowing your team to sync CPT metas, options pages, and blocks without touching databases.
 
 **Note on Custom Post Types**: With modern versions of SCF (and ACF 6.1+), you can now natively create Custom Post Types and Taxonomies securely through the plugin UI. Since these register directly into the `acf-json` sync, using a boilerplate PHP class for CPTs is highly discouraged in Easy Theme. Let the plugin handle the heavy lifting!
 
@@ -124,10 +128,17 @@ By keeping your fields in JSON format, they are fully trackable via Git, allowin
 This starter theme supercharges development by bundling its own WP-CLI commands capable of scaffolding SCF/ACF Gutenberg blocks instantly. If you have WP-CLI installed globally, simply navigate to your WordPress installation via terminal and run:
 
 **Generate a Custom SCF Block:**
+
 ```bash
 wp easy make:block HeroSection
 ```
-This automatically generates a proper `block.json` and a fresh OOP-ready PHP structure in `template-parts/blocks/hero-section/`. Since SCF fully supports `block.json` in v6+, you can easily register this block in your Init lifecycle by calling `register_block_type(get_template_directory() . '/template-parts/blocks/hero-section/block.json')`.
+
+This automatically generates a proper `block.json` and a fresh OOP-ready PHP structure in `template-parts/blocks/hero-section/`. Since we built an **Auto-Loader**, you DO NOT need to write any PHP to register this block! The theme scans `template-parts/blocks/` and injects the `block.json` file instantly.
+
+## Pre-commit Hooks
+
+This theme guarantees high-quality, readable code by integrating **Husky**, **Lint-Staged**, and **Prettier** (with `@prettier/plugin-php`).
+Whenever you or your team runs `git commit`, Husky will automatically intercept the process, format any modified `*.php`, `*.js`, or `*.css` files, and then successfully commit them beautifully structured.
 
 ## Contributing
 
