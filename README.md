@@ -8,6 +8,9 @@
 - **Built-in Security & Performance**: Emojis removed, XML-RPC disabled, Rest API restricted, unnecessary head tags cleaned up.
 - **Vite Setup**: Hot Module Replacement (HMR) for incredibly fast development.
 - **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+- **Secure Custom Fields / ACF Sync**: Pre-configured JSON sync for fields straight into the `acf-json/` git-tracked folder.
+- **WP-CLI Code Generator**: Easily scaffold Blocks and Custom Post Types using built-in terminal commands!
+- **SVG Helper Component**: Safely and easily load inline SVGs directly from the theme.
 - **GSAP**: Robust JavaScript animation library.
 - **Three.js**: Included setup for high-end 3D graphics on the web.
 - **Lucide Icons**: Clean, consistent, and beautiful SVG icons.
@@ -98,6 +101,34 @@ This starter theme includes a `Security` class (`inc/Setup/Security.php`) that a
 
 **How to change this?**
 If you are building a blog and you *need* RSS feeds, or you are building a headless setup and *need* the public REST API, you can easily toggle these settings by commenting out the respective lines inside the `register()` method located in `inc/Setup/Security.php`.
+
+## SVGs & Local Helpers
+
+To safely embed an object-oriented SVG into your template without generic HTML image tags, use the built-in helper. Just point to any SVG stored inside `/assets/images/`:
+```php
+echo \EasyTheme\Helpers\Svg::render('icon-name', 'w-6 h-6 text-blue-500');
+```
+
+## Secure Custom Fields (SCF) / ACF Integration
+
+This theme is pre-configured to automatically save and load SCF/ACF field groups as JSON files directly inside the `acf-json/` directory. 
+By keeping your fields in JSON format, they are fully trackable via Git, allowing your team to sync CPT metas, options pages, and custom Gutenberg blocks without touching the databases. Just make sure the SCF or ACF Pro plugin is activated.
+
+## CLI Core Generators
+
+This starter theme supercharges development by bundling its own WP-CLI commands capable of scaffolding boilerplate code instantly. If you have WP-CLI installed globally, simply navigate to your WordPress installation via terminal and run:
+
+**Generate a Custom Gutenberg Block:**
+```bash
+wp easy make:block HeroSection
+```
+This automatically creates a fresh OOP-ready Tailwind structure in `template-parts/blocks/hero-section.php`.
+
+**Generate a Custom Post Type:**
+```bash
+wp easy make:cpt Portfolio
+```
+This generates a complete OOP CPT registration class inside `inc/PostTypes/Portfolio.php`. All you have to do is initialize it inside `inc/Core/Init.php`.
 
 ## Contributing
 

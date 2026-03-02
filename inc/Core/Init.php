@@ -18,6 +18,8 @@ class Init {
 			\EasyTheme\Setup\ThemeSupport::class,
 			\EasyTheme\Setup\Enqueue::class,
 			\EasyTheme\Setup\Security::class,
+			\EasyTheme\Setup\SCF::class,
+			\EasyTheme\CLI\MakeCommand::class,
 		];
 	}
 

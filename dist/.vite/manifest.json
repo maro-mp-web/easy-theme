@@ -232,12 +232,12 @@
     "src": "node_modules/@fontsource/playfair-display/files/playfair-display-vietnamese-700-normal.woff2"
   },
   "src/js/main.js": {
-    "file": "assets/main-BSSfJTkQ.js",
+    "file": "assets/main-haaDfV6W.js",
     "name": "main",
     "src": "src/js/main.js",
     "isEntry": true,
     "css": [
-      "assets/main-Cha5YaH7.css"
+      "assets/main-D_tOt90y.css"
     ],
     "assets": [
       "assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2",
