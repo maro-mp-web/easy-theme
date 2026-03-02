@@ -1,0 +1,20 @@
+{
+    "name": "easy-theme/easy-theme",
+    "description": "WordPress Theme with OOP Autoloading and Namespaces",
+    "type": "wordpress-theme",
+    "autoload": {
+        "psr-4": {
+            "EasyTheme\\": "inc/"
+        }
+    },
+    "require": {
+        "php": ">=8.0"
+    },
+    "authors": [
+        {
+            "name": "Maro Pincevic"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
