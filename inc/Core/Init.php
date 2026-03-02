@@ -15,7 +15,10 @@ class Init {
 	 */
 	public static function get_services() {
 		return [
+			\EasyTheme\Environment\Env::class,
 			\EasyTheme\Setup\ThemeSupport::class,
+			\EasyTheme\Setup\Gutenberg::class,
+			\EasyTheme\Setup\Media::class,
 			\EasyTheme\Setup\Enqueue::class,
 			\EasyTheme\Setup\Security::class,
 			\EasyTheme\Setup\SCF::class,

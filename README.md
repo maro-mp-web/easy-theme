@@ -8,8 +8,11 @@
 - **Built-in Security & Performance**: Emojis removed, XML-RPC disabled, Rest API restricted, unnecessary head tags cleaned up.
 - **Vite Setup**: Hot Module Replacement (HMR) for incredibly fast development.
 - **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
-- **Secure Custom Fields / ACF Sync**: Pre-configured JSON sync for fields straight into the `acf-json/` git-tracked folder.
-- **WP-CLI Code Generator**: Easily scaffold Blocks and Custom Post Types using built-in terminal commands!
+- **Tailwind to Gutenberg Sync**: Automatically restricts the WordPress Editor color palette sizes to your Tailwind setup to prevent user design breaks!
+- **Tailwind Image Breakpoints**: Dynamically adds WordPress image resizer points matching SM, MD, LG, and XL logic!
+- **.env Support**: Keeps your API keys (Google Maps, Stripe, etc.) secure using `vlucas/phpdotenv`.
+- **Secure Custom Fields / ACF Sync**: Pre-configured JSON sync for fields straight into the `acf-json/` git-tracked folder. (It is highly recommended to manage CPTs via the modern SCF interface rather than in PHP code).
+- **WP-CLI Block Generator**: Instantly generate ACF/SCF Block Boilerplates (`block.json` & PHP templates) using built-in terminal commands!
 - **SVG Helper Component**: Safely and easily load inline SVGs directly from the theme.
 - **GSAP**: Robust JavaScript animation library.
 - **Three.js**: Included setup for high-end 3D graphics on the web.
@@ -111,24 +114,20 @@ echo \EasyTheme\Helpers\Svg::render('icon-name', 'w-6 h-6 text-blue-500');
 
 ## Secure Custom Fields (SCF) / ACF Integration
 
-This theme is pre-configured to automatically save and load SCF/ACF field groups as JSON files directly inside the `acf-json/` directory. 
-By keeping your fields in JSON format, they are fully trackable via Git, allowing your team to sync CPT metas, options pages, and custom Gutenberg blocks without touching the databases. Just make sure the SCF or ACF Pro plugin is activated.
+This theme is pre-configured to automatically save and load SCF/ACF field groups directly inside the `acf-json/` directory. 
+By keeping your fields in JSON format, they are fully trackable via Git, allowing your team to sync CPT metas, options pages, and blocks without touching databases. 
+
+**Note on Custom Post Types**: With modern versions of SCF (and ACF 6.1+), you can now natively create Custom Post Types and Taxonomies securely through the plugin UI. Since these register directly into the `acf-json` sync, using a boilerplate PHP class for CPTs is highly discouraged in Easy Theme. Let the plugin handle the heavy lifting!
 
 ## CLI Core Generators
 
-This starter theme supercharges development by bundling its own WP-CLI commands capable of scaffolding boilerplate code instantly. If you have WP-CLI installed globally, simply navigate to your WordPress installation via terminal and run:
+This starter theme supercharges development by bundling its own WP-CLI commands capable of scaffolding SCF/ACF Gutenberg blocks instantly. If you have WP-CLI installed globally, simply navigate to your WordPress installation via terminal and run:
 
-**Generate a Custom Gutenberg Block:**
+**Generate a Custom SCF Block:**
 ```bash
 wp easy make:block HeroSection
 ```
-This automatically creates a fresh OOP-ready Tailwind structure in `template-parts/blocks/hero-section.php`.
-
-**Generate a Custom Post Type:**
-```bash
-wp easy make:cpt Portfolio
-```
-This generates a complete OOP CPT registration class inside `inc/PostTypes/Portfolio.php`. All you have to do is initialize it inside `inc/Core/Init.php`.
+This automatically generates a proper `block.json` and a fresh OOP-ready PHP structure in `template-parts/blocks/hero-section/`. Since SCF fully supports `block.json` in v6+, you can easily register this block in your Init lifecycle by calling `register_block_type(get_template_directory() . '/template-parts/blocks/hero-section/block.json')`.
 
 ## Contributing
 
