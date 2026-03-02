@@ -17,6 +17,7 @@ class Init {
 		return [
 			\EasyTheme\Setup\ThemeSupport::class,
 			\EasyTheme\Setup\Enqueue::class,
+			\EasyTheme\Setup\Security::class,
 		];
 	}
 

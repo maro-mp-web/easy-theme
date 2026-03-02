@@ -5,6 +5,7 @@
 ## Features
 
 - **Object-Oriented PHP**: Uses PSR-4 autoloading via Composer for a clean and maintainable codebase.
+- **Built-in Security & Performance**: Emojis removed, XML-RPC disabled, Rest API restricted, unnecessary head tags cleaned up.
 - **Vite Setup**: Hot Module Replacement (HMR) for incredibly fast development.
 - **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
 - **GSAP**: Robust JavaScript animation library.
@@ -83,6 +84,20 @@ easy-theme/
 ├── header.php              # Header view template
 └── footer.php              # Footer view template
 ```
+
+## Security & Performance Optimizations
+
+This starter theme includes a `Security` class (`inc/Setup/Security.php`) that automatically applies several best practices to harden your WordPress installation and improve frontend performance. By default it features:
+
+1. **Emojis Disabled**: Removes the extra JS and CSS WordPress loads for older browser emoji support.
+2. **XML-RPC Disabled**: Blocks `xmlrpc.php` to prevent proxy brute-force and DDoS attacks.
+3. **RSS Feeds Disabled**: If you are building a corporate site or web app, removing feeds prevents content scraping.
+4. **REST API Restricted**: The WP REST API is restricted strictly to logged-in users only to prevent user enumeration (`/wp-json/wp/v2/users`).
+5. **Head Meta Cleanup**: Removes generator tags (WP Version), RSD links, WLW Manifest, and Shortlinks.
+6. **File Editor Disabled**: Automatically defines `DISALLOW_FILE_EDIT` to prevent editing PHP files directly through the WP Admin dashboard.
+
+**How to change this?**
+If you are building a blog and you *need* RSS feeds, or you are building a headless setup and *need* the public REST API, you can easily toggle these settings by commenting out the respective lines inside the `register()` method located in `inc/Setup/Security.php`.
 
 ## Contributing
 
