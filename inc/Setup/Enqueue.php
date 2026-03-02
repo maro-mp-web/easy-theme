@@ -7,7 +7,7 @@
 
 namespace EasyTheme\Setup;
 
-class Enqueue {
+class Enqueue implements \EasyTheme\Core\ServiceInterface {
 	public function register() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
         add_action( 'wp_head', array( $this, 'vite_head_module_hook' ) );

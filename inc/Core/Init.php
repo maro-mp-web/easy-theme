@@ -25,13 +25,20 @@ class Init {
 
 	/**
 	 * Loop through the classes, initialize them,
-	 * and call the register() method if it exists
+	 * and call the register() method if it implements ServiceInterface
 	 */
 	public static function register_services() {
 		foreach ( self::get_services() as $class ) {
 			$service = self::instantiate( $class );
-			if ( method_exists( $service, 'register' ) ) {
+			
+			// OOP Best Practice: Ensure the object adheres to the contract!
+			if ( $service instanceof ServiceInterface ) {
 				$service->register();
+			} else {
+				// Prevent faulty developer code from silent failing
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+					error_log( 'Class ' . get_class( $service ) . ' must implement ServiceInterface to be registered automatically.' );
+				}
 			}
 		}
 	}

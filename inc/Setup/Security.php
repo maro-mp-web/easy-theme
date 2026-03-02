@@ -7,7 +7,7 @@
 
 namespace EasyTheme\Setup;
 
-class Security {
+class Security implements \EasyTheme\Core\ServiceInterface {
 	public function register() {
 		// 1. Remove Emojis
 		add_action( 'init', array( $this, 'disable_emojis' ) );

@@ -7,7 +7,7 @@
 
 namespace EasyTheme\Setup;
 
-class SCF {
+class SCF implements \EasyTheme\Core\ServiceInterface {
 
 	/**
 	 * Register actions and filters

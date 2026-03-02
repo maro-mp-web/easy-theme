@@ -9,7 +9,7 @@ namespace EasyTheme\CLI;
 
 use WP_CLI;
 
-class MakeCommand {
+class MakeCommand implements \EasyTheme\Core\ServiceInterface {
 
 	/**
 	 * Register the CLI command.

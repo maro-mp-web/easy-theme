@@ -7,7 +7,7 @@
 
 namespace EasyTheme\Setup;
 
-class ThemeSupport {
+class ThemeSupport implements \EasyTheme\Core\ServiceInterface {
 	public function register() {
 		add_action( 'after_setup_theme', array( $this, 'setup' ) );
 	}
