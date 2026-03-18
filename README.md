@@ -31,7 +31,7 @@
 1. **Clone the repository** into your WordPress `wp-content/themes` directory:
 
     ```bash
-    git clone https://github.com/yourusername/easy-theme.git easy-theme
+    git clone https://github.com/maro-mp-web/easy-theme.git easy-theme
     cd easy-theme
     ```
 
